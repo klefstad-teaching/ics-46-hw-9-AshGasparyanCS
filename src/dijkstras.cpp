@@ -1,6 +1,6 @@
 #include "dijkstras.h"
 
-vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous);
+vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous)
 {
     int V = G.numVertices;
     vector<int> distance(V, numeric_limits<int>::max());
