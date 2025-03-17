@@ -85,6 +85,48 @@ bool edit_distance_within(const string& str1, const string& str2, int d)
     return dp[m][n] <= d;
 }
 
+void load_words(set<string>& word_list, const string& file_name)
+{
+    ifstream in(file_name);
+    if(!in)
+    {
+        error(file_name, "", "could not be opened");
+        return;
+    }
+    string word;
+    while(in >> word)
+    {
+        transform(word.begin(), word.end(), word.begin(), ::tolower);
+        word_list.insert(word);
+    }
+    in.close();
+}
+
+void print_word_ladder(const vector<string>& ladder)
+{
+    if(ladder.empty())
+    {
+        return;
+    }
+
+    cout << "Word ladder found: ";
+    for(size_t i = 0; i < ladder.size(); ++i)
+    {
+        cout << ladder[i];
+        if(i < ladder.size() - 1)
+        {
+            cout << " -> ";
+        }
+    }
+    cout << endl;
+}
+
+void verify_word_ladder()
+{
+    set<string> word_list;
+    load_words(word_list, "words.txt");
+}
+
 void error(string word1, string word2, string msg)
 {
     cerr << "Error: " << msg << " (" << word1 << " -> " << word2 << ")\n";
