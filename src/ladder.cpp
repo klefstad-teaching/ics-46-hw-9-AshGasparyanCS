@@ -103,7 +103,7 @@ void print_word_ladder(const vector<string>& ladder)
 {
     if(ladder.empty())
     {
-        cout << "No word ladder found. \n";
+        cout << "No word ladder found.\n";
         return;
     }
 
