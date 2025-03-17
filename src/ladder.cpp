@@ -62,7 +62,7 @@ bool edit_distance_within(const string& str1, const string& str2, int d)
         return false;
     }
 
-    vector<vector<int> dp(m + 1, vector<int>(n + 1, 0 ));
+    vector<vector<int> dp(m + 1), vector<int>(n + 1, 0 );
 
     for(size_t i = 0; i <= m; ++i)
     {
