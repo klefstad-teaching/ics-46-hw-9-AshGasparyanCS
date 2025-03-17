@@ -19,7 +19,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
 
         for(const auto& edge : G[u])
         {
-            int v edge.dst, weight = edge.weight;
+            int v = edge.dst, weight = edge.weight;
             if(distance[u] + weight < distance[v])
             {
                 distance[v] = distance[u] + weight;
