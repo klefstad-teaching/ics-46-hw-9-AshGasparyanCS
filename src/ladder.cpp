@@ -32,7 +32,7 @@ bool edit_distance_within(const string& str1, const string& str2, int d)
         {
             if(str1[i-1] == str2[j-1])
             {
-                dp[i][j] = dp[i=1][j-1];
+                dp[i][j] = dp[i-1][j-1];
             }
             else
             {
@@ -43,7 +43,7 @@ bool edit_distance_within(const string& str1, const string& str2, int d)
     return dp[length1][length2] <= d;
 }
 
-bool is_adjacent(const string& word1, const& word2)
+bool is_adjacent(const string& word1, const string& word2)
 {
     return edit_distance_within(word1, word2, 1);
 }
