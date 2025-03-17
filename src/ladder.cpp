@@ -51,3 +51,36 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
     error(begin_word, end_word, "No ladder found.");
     return {};
 }
+
+bool edit_distance_within(const string& str1, const string& str2, int d)
+{
+    const size_t m = str1.length();
+    const size_t n = str2.length();
+
+    if(abs(int(m - n)) > d)
+    {
+        return false;
+    }
+
+    vector<vector<int> dp(m + 1, vector<int>(n + 1, 0 ));
+
+    for(size_t i = 0; i <= m; ++i)
+    {
+        dp[i][0] = i;
+    }
+
+    for(size_t j = 0; j <= n; ++j)
+    {
+        dp[0][j] = j;
+    }
+
+    for(size_t i = 1; i <= m; ++i)
+    {
+        for(size_t j = 1; j <= n; ++j)
+        {
+            int cost = (str1[i-1] == str2[j-1]) ? 0 : 1;
+            dp[i][j] = min({dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + cost});
+        }
+    }
+    return dp[m][n] <= d;
+}
