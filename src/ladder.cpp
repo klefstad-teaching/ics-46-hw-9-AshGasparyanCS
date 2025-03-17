@@ -81,3 +81,36 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
     }
     return empty;
 }
+
+void load_words(set<string> & word_list, const string& file_name)
+{
+    ifstream in(file_name);
+    if(!in)
+    {
+        error(file_name, "could not be opened." , "");
+        return;
+    }
+    
+    string word;
+    while(in >> word)
+    {
+        word_list.insert(word);
+    }
+    in.close();
+}
+
+void print_word_ladder(const vector<string>& ladder)
+{
+    if(ladder.empty())
+    {
+        cout << "No word ladder found. \n";
+        return;
+    }
+
+    cout << "Word ladder found: ";
+    for (size_t i = 0; i < ladder.size(); ++i)
+    {
+        cout << ladder[i] << " ";
+    }
+    cout << endl;
+}
