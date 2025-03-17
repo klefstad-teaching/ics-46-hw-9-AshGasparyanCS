@@ -84,3 +84,8 @@ bool edit_distance_within(const string& str1, const string& str2, int d)
     }
     return dp[m][n] <= d;
 }
+
+void error(string word1, string word2, string msg)
+{
+    cerr << "Error: " << msg << " (" << word1 << " -> " << word2 << ")\n";
+}
